@@ -85,14 +85,4 @@ A full-stack web application built for XWZ LTD to manage car parking lots, recor
    - Go to "Reports".
    - Select dates and click "Generate Report" to view incoming cars or outgoing cars and revenue collected.
 
-## Major Concepts Explained
 
-1. **JWT (JSON Web Tokens):** Used for stateless authentication. When a user logs in, the server signs a token containing their ID and role and sends it back. The frontend stores this token in `localStorage` and attaches it to the `Authorization` header of every subsequent API request via an Axios interceptor. The server verifies this token to authenticate requests.
-
-2. **Prisma ORM:** An Object-Relational Mapper that allows us to interact with the PostgreSQL database using JavaScript objects instead of raw SQL queries. We defined our schema in `schema.prisma`, and Prisma generated a type-safe client for us to use in our controllers.
-
-3. **Role-Based Access Control (RBAC):** We implemented middleware `requireRole` in Express. After the `verifyToken` middleware decodes the JWT and attaches the user payload to `req.user`, `requireRole` checks if `req.user.role` matches the allowed roles (e.g., `['ADMIN']`). The frontend also has a `ProtectedRoute` component that checks the role before rendering a page.
-
-4. **Pagination:** Implemented on the backend using Prisma's `skip` and `take` options. The frontend passes `page` and `limit` query parameters. The backend returns the data array along with a `pagination` object (total, page, limit, totalPages) so the frontend can render the correct number of pages and handle "Next/Prev" logic.
-
-5. **CORS (Cross-Origin Resource Sharing):** A security feature in browsers. Since our frontend (port 5173) and backend (port 5000) run on different origins, the backend must explicitly allow the frontend origin using the `cors` middleware, otherwise the browser will block the requests.
