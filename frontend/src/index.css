@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-navy-950: #070F27;
+    --color-navy-900: #011F5B;
+    --color-navy-800: #0D2470;
+    --color-navy-700: #0236A0;
+    --color-navy-500: #3074FD;
+    --color-navy-100: #E0EDFF;
+    --color-navy-50:  #F0F6FF;
+
+    --color-bg:      #F1F5FB;
+    --color-surface: #FFFFFF;
+    --color-border:  #E2E8F2;
+
+    --color-text-primary:   #0F172A;
+    --color-text-secondary: #64748B;
+    --color-text-muted:     #94A3B8;
+
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-error:   #EF4444;
+
+    --sidebar-width: 256px;
+    --header-height: 64px;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+  }
+}
+
+@layer components {
+  /* Page header */
+  .page-title {
+    @apply text-2xl font-bold text-slate-900 tracking-tight;
+  }
+  .page-subtitle {
+    @apply text-sm text-slate-500 mt-1;
+  }
+
+  /* Card / surface */
+  .card {
+    @apply bg-white rounded-xl border border-app-border shadow-sm;
+  }
+
+  /* Form inputs */
+  .form-input {
+    @apply w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900
+           placeholder:text-slate-400 transition-all duration-150
+           focus:outline-none focus:ring-2 focus:ring-navy-500/30 focus:border-navy-500;
+  }
+
+  .form-label {
+    @apply block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5;
+  }
+
+  .form-error {
+    @apply text-xs text-red-500 mt-1;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-navy-500 px-4 py-2.5
+           text-sm font-semibold text-white shadow-sm transition-all duration-150
+           hover:bg-navy-600 focus:outline-none focus:ring-2 focus:ring-navy-500/40 focus:ring-offset-2
+           disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white
+           px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition-all duration-150
+           hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400/30 focus:ring-offset-2;
+  }
+
+  .btn-success {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-4 py-2.5
+           text-sm font-semibold text-white shadow-sm transition-all duration-150
+           hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-400/40 focus:ring-offset-2;
+  }
+
+  /* Status badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+  .badge-green {
+    @apply badge bg-emerald-50 text-emerald-700 border border-emerald-200;
+  }
+  .badge-gray {
+    @apply badge bg-slate-100 text-slate-600 border border-slate-200;
+  }
+  .badge-red {
+    @apply badge bg-red-50 text-red-700 border border-red-200;
+  }
+  .badge-amber {
+    @apply badge bg-amber-50 text-amber-700 border border-amber-200;
+  }
+
+  /* Table styles */
+  .data-table {
+    @apply min-w-full;
+  }
+  .data-table thead th {
+    @apply px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-widest text-slate-400
+           bg-slate-50 border-b border-slate-100 first:rounded-tl-xl last:rounded-tr-xl;
+  }
+  .data-table tbody tr {
+    @apply border-b border-slate-50 transition-colors hover:bg-navy-50/40;
+  }
+  .data-table tbody tr:last-child {
+    @apply border-b-0;
+  }
+  .data-table tbody td {
+    @apply px-5 py-4 text-sm text-slate-700;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply animate-spin rounded-full border-2 border-slate-200 border-t-navy-500;
+  }
+}
+
+/* Print utility */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
